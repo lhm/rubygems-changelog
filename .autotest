@@ -1,0 +1,40 @@
+# -*- ruby -*-
+
+require 'autotest/restart'
+
+Autotest.add_hook :initialize do |at|
+  # disable unit-diff for prettier minitest output
+  # see: https://github.com/seattlerb/zentest/commit/b462a8f1dcc03528d91c77cabc15f8575d9c378c#commitcomment-418341
+  at.unit_diff = 'cat'
+
+#   at.extra_files << "../some/external/dependency.rb"
+#
+#   at.libs << ":../some/external"
+#
+#   at.add_exception 'vendor'
+#
+#   at.add_mapping(/dependency.rb/) do |f, _|
+#     at.files_matching(/test_.*rb$/)
+#   end
+#
+#   %w(TestA TestB).each do |klass|
+#     at.extra_class_map[klass] = "test/test_misc.rb"
+#   end
+
+end
+
+# Autotest.add_hook :run_command do |at|
+#   system "rake build"
+# end
+# -*- ruby -*-
+
+# require 'autotest/autoupdate'
+# require 'autotest/once'
+# require 'autotest/rcov'
+# require 'autotest/restart'
+# require 'autotest/timestamp'
+
+# Autotest::AutoUpdate.sleep_time = o
+# Autotest::AutoUpdate.update_cmd = o
+# Autotest::RCov.command = o
+# Autotest::RCov.pattern = o

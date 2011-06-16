@@ -1,0 +1,14 @@
+.autotest
+History.txt
+Manifest.txt
+NOTES
+README.txt
+Rakefile
+lib/changelog.rb
+lib/changelog/file.rb
+lib/changelog/gem_specification_extension.rb
+lib/changelog/stats.rb
+test/fixtures/testspec-good.gemspec
+test/helper.rb
+test/test_file.rb
+test/test_gem_specification_extension.rb
