@@ -3,3 +3,4 @@
 * declare dependencies
 * development dependencies
 * test with 1.8.7
+* Specification#files is discarded during install via #to_ruby_for_cache - investigate if intended?
