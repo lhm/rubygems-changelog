@@ -33,8 +33,15 @@ module Changelog
       candidates.empty?
     end
 
+    # Specification#files is unreliable, so we have to retrieve the 
+    # file list from disk
+    #
+    def installed_files
+      Dir.chdir(@spec.gem_dir) { Dir['**/*'].reject {|fp| ::File.directory?(fp) } }
+    end
+
     def candidates
-      @candidates ||= find(@spec.files)
+      @candidates ||= find(installed_files)
     end
 
     def find(filelist)

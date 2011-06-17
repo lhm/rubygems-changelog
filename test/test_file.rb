@@ -1,4 +1,5 @@
 require 'helper'
+require 'tmpdir'
 
 class TestFile < MiniTest::Unit::TestCase
 
@@ -14,12 +15,12 @@ class TestFile < MiniTest::Unit::TestCase
   end
 
   def test_name
-    @spec.stubs(:files => %w(foo.rb bar.rb History.txt))
+    @cf.stubs(:installed_files => %w(foo.rb bar.rb History.txt))
     assert_equal "History.txt", @cf.name
   end
 
   def test_name_returns_nil_if_missing
-    @spec.stubs(:files => %w(foo bar))
+    @cf.stubs(:installed_files => %w(foo bar))
     assert_equal nil, @cf.name
   end
 
@@ -46,26 +47,27 @@ class TestFile < MiniTest::Unit::TestCase
 
   def test_ambiguous_returns_true_if_more_than_one_candidate
     files = %w(History Changelog)
-    @spec.stubs(:files => files)
+    @cf.stubs(:installed_files => files)
     assert @cf.ambiguous?
   end
 
   def test_ambiguous_returns_false_if_no_match
     files = %w(foo bar)
-    @spec.stubs(:files => files)
+    @cf.stubs(:installed_files => files)
     assert_equal false, @cf.ambiguous?
   end
 
   def test_missing
     files = %w(foo bar)
-    @spec.stubs(:files => files)
+    @cf.stubs(:installed_files => files)
     assert @cf.missing?
   end
 
   def test_path
     files  = %w(History.txt)
     gemdir = '/Library/Ruby/Gems/1.8/gems/mygem-0.1.0'
-    @spec.stubs(:files => files, :gem_dir => gemdir)
+    @cf.stubs(:installed_files => files)
+    @spec.stubs(:gem_dir => gemdir)
     assert_equal "#{gemdir}/History.txt", @cf.path
   end
 
@@ -112,6 +114,19 @@ class TestFile < MiniTest::Unit::TestCase
       refute_match Changelog::File::RE_CHANGELOG, filename
     end
 
+  end
+
+  def test_installed_files
+    gem_path = "gemdir/mygem-0.1.0"
+    Dir.mktmpdir do |dir|
+      Dir.chdir(dir) do
+        FileUtils.mkdir_p File.join(gem_path, "lib")
+        File.open(File.join(gem_path, "CHANGELOG"), 'w+') {|f| f << "Changelog content"}
+
+        @spec.stubs(:gem_dir => gem_path)
+        assert_equal ["CHANGELOG"], @cf.installed_files
+      end
+    end
   end
 
 end

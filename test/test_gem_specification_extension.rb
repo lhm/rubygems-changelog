@@ -17,6 +17,7 @@ class TestGemSpecificationExtension < MiniTest::Unit::TestCase
   end
 
   def test_changelog_working
+    @spec.changelog.stubs(:installed_files => ["History.txt", "lib/foo.rb"])
     assert_equal 'History.txt', @spec.changelog.name
     assert_equal false, @spec.changelog.ambiguous?
   end
