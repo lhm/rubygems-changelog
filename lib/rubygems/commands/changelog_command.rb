@@ -39,8 +39,8 @@ class Gem::Commands::ChangelogCommand < Gem::Command
       say "No changelog file found for gem: #{spec.name} #{spec.version}"
       terminate_interaction 1
     elsif changelog.ambiguous?
-      say "Multiple possible changlog files found for gem: #{spec.name} #{spec.version}"
-      # TODO display candidates
+      say "Multiple possible changelog files found for gem: #{spec.name} #{spec.version}:"
+      changelog.candidates.each {|cname| say cname}
       terminate_interaction 1
     else
       say changelog.content
