@@ -4,10 +4,13 @@ Manifest.txt
 NOTES
 README.txt
 Rakefile
+TODO
 lib/changelog.rb
 lib/changelog/file.rb
 lib/changelog/gem_specification_extension.rb
 lib/changelog/stats.rb
+lib/rubygems/commands/changelog_command.rb
+lib/rubygems_plugin.rb
 test/fixtures/testspec-good.gemspec
 test/helper.rb
 test/test_file.rb
