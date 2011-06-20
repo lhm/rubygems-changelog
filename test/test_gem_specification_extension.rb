@@ -3,7 +3,7 @@ require 'helper'
 class TestGemSpecificationExtension < MiniTest::Unit::TestCase
 
   def setup
-    Gem::Specification.send(:include, Changelog::GemSpecificationExtension)
+    Gem::Specification.send(:include, Gem::Changelog::GemSpecificationExtension)
     @spec_path = File.join(File.dirname(__FILE__), 'fixtures', 'testspec-good.gemspec')
     @spec = Gem::Specification.load(@spec_path)
   end
@@ -13,7 +13,7 @@ class TestGemSpecificationExtension < MiniTest::Unit::TestCase
   end
 
   def test_changelog_returns_file
-    assert_kind_of Changelog::File, @spec.changelog
+    assert_kind_of Gem::Changelog::File, @spec.changelog
   end
 
   def test_changelog_working

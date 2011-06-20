@@ -5,12 +5,12 @@ class TestFile < MiniTest::Unit::TestCase
 
   def setup
     @spec = stub()
-    @cf   = Changelog::File.new(@spec)
+    @cf   = Gem::Changelog::File.new(@spec)
   end
 
   def test_initialization
     assert_raises ArgumentError do
-      Changelog::File.new
+      Gem::Changelog::File.new
     end
   end
 
@@ -92,7 +92,7 @@ class TestFile < MiniTest::Unit::TestCase
       doc/CHANGELOG
       docs/CHANGELOG
     ).each do |filename|
-      assert_match Changelog::File::RE_CHANGELOG, filename
+      assert_match Gem::Changelog::File::RE_CHANGELOG, filename
     end
   end
 
@@ -111,7 +111,7 @@ class TestFile < MiniTest::Unit::TestCase
       .changes
       foo.changes
     ).each do |filename|
-      refute_match Changelog::File::RE_CHANGELOG, filename
+      refute_match Gem::Changelog::File::RE_CHANGELOG, filename
     end
 
   end

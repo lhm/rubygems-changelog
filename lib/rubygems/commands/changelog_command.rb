@@ -1,7 +1,7 @@
 require 'rubygems/command'
 require 'rubygems/version_option'
 
-require 'changelog'
+require 'rubygems/changelog'
 
 #
 # gem command for displaying the changelog or history file of an installed gem
