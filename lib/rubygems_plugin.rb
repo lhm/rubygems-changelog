@@ -2,7 +2,7 @@ require 'rubygems/command_manager'
 
 module Gem
   module Changelog
-    VERSION = '0.0.1'
+    VERSION = '0.0.2'
   end
 end
 

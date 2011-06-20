@@ -1,6 +1,6 @@
-= rubygems_changelog
+= rubygems-changelog
 
-https://github.com/lhm
+https://github.com/lhm/rubygems-changelog
 
 == DESCRIPTION:
 
@@ -9,29 +9,23 @@ changelog or history file.
 
 == FEATURES/PROBLEMS:
 
-* not yet ready
-* no gem command yet
+* displays the changelog file of a given gem
+* currently detects files named /(changelog|history)/i
+* handles ambiguous file names (could still need some work, though..)
 
 == SYNOPSIS:
 
-  gem changelog mygem
+  gem changelog GEMNAME
 
 == REQUIREMENTS:
 
-* ruby-1.9
+* rubygems >= 1.8.5
+* ruby 1.9
 
 == INSTALL:
 
-* (sudo) gem install rubygems-changelog
-
-== DEVELOPERS:
-
-After checking out the source, run:
-
-  $ rake newb
-
-This task will install any missing dependencies, run the tests/specs,
-and generate the RDoc.
+* rake package
+* gem install -l pkg/rubygems-changelog-0.0.2
 
 == LICENSE:
 

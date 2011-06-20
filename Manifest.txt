@@ -1,7 +1,6 @@
 .autotest
 History.txt
 Manifest.txt
-NOTES
 README.txt
 Rakefile
 TODO

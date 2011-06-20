@@ -1,7 +1,0 @@
-== Detection
-
-* in subdir:
-  - docs/CHANGELOG (eventmachine)
-
-* inline
-  - in README (rack)

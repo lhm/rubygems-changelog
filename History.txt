@@ -1,3 +1,9 @@
+=== 0.0.2 / 2011-06-20
+
+* added gem changelog command
+* fixed some namespace issues
+* displays a message when multiple possible changelog files are found
+
 === 0.0.1 / 2011-06-16
 
 * 1 major enhancement
