@@ -4,4 +4,4 @@ require 'changelog/file'
 require 'changelog/gem_specification_extension'
 require 'changelog/stats'
 
-Gem::Specification.send(:include, Gem::Changelog::GemSpecificationExtension)
+# Gem::Specification.send(:include, Gem::Changelog::GemSpecificationExtension)

@@ -33,7 +33,7 @@ class Gem::Commands::ChangelogCommand < Gem::Command
   def execute
     name = get_one_gem_name
     spec = Gem::Specification.find_by_name name, options[:version]
-    changelog = spec.changelog
+    changelog = Gem::Changelog::File.new(spec)
 
     if changelog.missing?
       say "No changelog file found for gem: #{spec.name} #{spec.version}"

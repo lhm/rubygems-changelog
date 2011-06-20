@@ -49,3 +49,5 @@ module Gem
   end
 
 end
+
+Gem::Specification.send(:include, Gem::Changelog::GemSpecificationExtension)
